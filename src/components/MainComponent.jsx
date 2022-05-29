@@ -26,8 +26,8 @@ const MainComponent = () => {
           searchItem
             .split(" ")
             .every((sItem) =>
-              Object.keys(odr.items).some(
-                (item) => item.toLowerCase() === sItem.toLowerCase()
+              Object.keys(odr.items).some((item) =>
+                item.toLowerCase().includes(sItem.toLowerCase())
               )
             )
         );
