@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const OrderTable = ({ orders }) => {
-  const [sortedField, setSortedField] = useState({ascending:false});
+  const [sortedField, setSortedField] = useState({ ascending: false });
   const sortedArray = [...orders];
   if (sortedField !== null) {
     sortedArray.sort((a, b) => {
@@ -15,7 +15,10 @@ const OrderTable = ({ orders }) => {
     });
   }
   const sortColumn = (col) => {
-    setSortedField((prev) => ({...prev,...{key:col,ascending:!prev.ascending}}));
+    setSortedField((prev) => ({
+      ...prev,
+      ...{ key: col, ascending: !prev.ascending },
+    }));
   };
   return (
     <table border={1}>
@@ -23,15 +26,28 @@ const OrderTable = ({ orders }) => {
         <tr>
           <th>Order Id</th>
           <th>Cust Id</th>
-          <th>
-            <button onClick={() => sortColumn("deliveryPincode")}>
-              Pin Code
-            </button>
+          <th
+            className="sort-col"
+            onClick={() => sortColumn("deliveryPincode")}
+          >
+            Pin Code
+            <p
+              className={`pin ${
+                sortedField.key === "deliveryPincode" &&
+                sortedField.ascending &&
+                "active"
+              }`}
+            ></p>
           </th>
-          <th>
-            <button onClick={() => sortColumn("orderDate")}>
-              Order Date
-            </button>
+          <th className="sort-col" onClick={() => sortColumn("orderDate")}>
+            Order Date
+            <p
+              className={`date ${
+                sortedField.key === "orderDate" &&
+                sortedField.ascending &&
+                "active"
+              }`}
+            ></p>
           </th>
           <th>Items</th>
         </tr>

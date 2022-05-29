@@ -27,7 +27,7 @@ const MainComponent = () => {
             .split(" ")
             .every((sItem) =>
               Object.keys(odr.items).some(
-                (item) => item.toLowerCase() == sItem.toLowerCase()
+                (item) => item.toLowerCase() === sItem.toLowerCase()
               )
             )
         );
@@ -42,6 +42,10 @@ const MainComponent = () => {
   const handleFilterChange = (obj) => {
     setFilter({ ...filter, ...obj });
   };
+  const handleSearch = (value) => {
+    visibleList(value);
+    setSearchItem(value);
+  };
   return (
     <div className="table-filter-wrap">
       {orderList.length === 0 ? (
@@ -53,8 +57,7 @@ const MainComponent = () => {
               initialFilterValue,
               filter,
               handleFilterChange,
-              searchItem,
-              setSearchItem,
+              handleSearch,
             }}
           />
           <OrderTable orders={visibleList()} />

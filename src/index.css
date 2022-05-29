@@ -25,10 +25,11 @@ button {
   max-height: fit-content;
   min-height: 2rem;
   border-radius: 0.7rem;
+  cursor: pointer;
 }
-th > button {
-  border: none;
-  font-weight: inherit;
+.sort-col {
+  position: relative;
+  cursor: pointer;
 }
 form {
   width: 80vw;
@@ -48,6 +49,7 @@ input {
 }
 input[type="submit"] {
   background-color: RGB(4, 169, 109);
+  cursor: pointer;
 }
 .divider > button {
   background-color: gray;
@@ -82,14 +84,43 @@ table {
   border-collapse: collapse;
 }
 th {
-  border-width: 0.3rem;
+  border-width: 5px;
+  height: 2rem;
 }
-tbody >tr {
-  border-bottom: 0.3rem solid black;
+tbody > tr {
+  border-bottom: 2px solid black;
 }
 td {
   border: none;
 }
 li {
   list-style: none;
+}
+
+.pin {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.date {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+ .active {
+  transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
 }

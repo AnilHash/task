@@ -1,10 +1,13 @@
+import { useState } from "react";
+
 const Filters = ({ filterObj }) => {
+  const [search, setSearch] = useState('');
   const {
     filter,
     handleFilterChange,
     initialFilterValue,
     searchItem,
-    setSearchItem,
+    handleSearch
   } = filterObj;
   const handleChange = (e) => {
     handleFilterChange({ [e.target.name]: e.target.value });
@@ -44,9 +47,10 @@ const Filters = ({ filterObj }) => {
             type="text"
             name="item"
             value={searchItem}
-            onChange={(e) =>setTimeout(setSearchItem(e.target.value),500) }
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
+        <button onClick={()=>handleSearch(search)}>Search</button>
       </div>
     </div>
   );
